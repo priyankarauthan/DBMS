@@ -51,3 +51,35 @@ CLOSE EmployeeCursor;
 
 -- Step 5: Deallocate the Cursor
 DEALLOCATE EmployeeCursor;
+
+```
+## ACID Properties in Databases
+ACID stands for Atomicity, Consistency, Isolation, and Durability. These properties ensure reliable transaction processing in a database.
+
+# 1. Atomicity ("All or Nothing")
+A transaction is atomic, meaning it either completes fully or fails completely.
+If any part of a transaction fails, the entire transaction is rolled back.
+Example:
+A money transfer from Account A to Account B involves debiting A and crediting B.
+If debiting succeeds but crediting fails, the whole transaction is rolled back to prevent data inconsistency.
+# 2. Consistency ("Valid State Transition")
+The database must remain in a consistent state before and after a transaction.
+Any transaction must adhere to integrity constraints (like foreign keys, unique constraints).
+Example:
+If transferring ₹100 from A to B, the total balance of the bank should remain unchanged.
+The transaction should never leave the database in a corrupt state.
+# 3. Isolation ("Concurrent Transactions Don't Interfere")
+Multiple transactions occurring simultaneously should not interfere with each other.
+The final database state should be as if transactions were executed sequentially.
+Isolation Levels in Databases:
+Read Uncommitted – Transactions can see uncommitted changes (Dirty Reads).
+Read Committed – Transactions only see committed changes.
+Repeatable Read – Ensures same result for repeated reads within a transaction.
+Serializable – Highest isolation; transactions execute one after another.
+Example:
+If two people withdraw ₹500 from the same account at the same time, isolation ensures that one transaction completes before the other starts processing.
+# 4. Durability ("Permanent Changes")
+Once a transaction is committed, changes are permanently stored, even in case of a system crash.
+Example:
+If a bank deposit transaction is committed, the amount should not disappear even if the system crashes.
+Databases achieve durability using logs, backups, and checkpoints.
