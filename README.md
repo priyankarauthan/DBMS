@@ -83,3 +83,13 @@ Once a transaction is committed, changes are permanently stored, even in case of
 Example:
 If a bank deposit transaction is committed, the amount should not disappear even if the system crashes.
 Databases achieve durability using logs, backups, and checkpoints.
+
+### Q- When to Use a Subquery and when to use Join
+Use JOIN when working with large datasets and retrieving related data.
+Use a subquery when working with aggregates or when it improves readability.
+Avoid subqueries inside WHERE clauses if a JOIN can achieve the same result for better performance.
+
+# ❌ When NOT to Use a Subquery
+For Large Datasets: Subqueries can be inefficient because they may run multiple times for each row.
+When a JOIN is More Optimal: If you can replace a subquery with a JOIN, the query might run faster.
+
