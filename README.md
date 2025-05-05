@@ -75,6 +75,32 @@ A **dirty read** occurs when a transaction reads data that has been modified by 
 - If the other transaction later **rolls back**, the first transaction will have read **invalid or inconsistent data** — hence the term “dirty.”
 
 
+  # 🔑 ACID Properties
+
+ACID stands for a set of properties that ensure reliable processing of database transactions:
+
+| **Property** | **Description** |
+|--------------|------------------|
+| **A - Atomicity** | All operations in a transaction are completed successfully, or none at all. No partial updates. |
+| **C - Consistency** | Transactions bring the database from one valid state to another, maintaining all defined rules (constraints, triggers, etc.). |
+| **I - Isolation** | Concurrent transactions do not interfere with each other. The final result is the same as if they were executed one after another. |
+| **D - Durability** | Once a transaction is committed, its changes are permanent—even in the event of a crash or power failure. |
+
+# ACID Properties in a Booking System Example
+
+1. **Atomicity**
+   - If the payment insert fails, the seat update is also rolled back. No partial booking.
+
+2. **Consistency**
+   - Seat status changes only if payment succeeds. Database rules like “seat must have a valid status” are enforced.
+
+3. **Isolation**
+   - If two users try to book the same seat at the same time, isolation ensures only one transaction wins.
+
+4. **Durability**
+   - Once the booking is committed, even if the server crashes, the booking remains stored in the database.
+
+
 
 
 
