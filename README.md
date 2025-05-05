@@ -68,6 +68,14 @@
 - Used in databases like PostgreSQL and Oracle.
 - Avoids locks by keeping multiple versions of data.
 
+# What is Dirty Read?
+
+A **dirty read** occurs when a transaction reads data that has been modified by another transaction but **not yet committed**.
+
+- If the other transaction later **rolls back**, the first transaction will have read **invalid or inconsistent data** — hence the term “dirty.”
+
+
+
 
 
 
