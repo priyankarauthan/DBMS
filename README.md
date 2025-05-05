@@ -1,5 +1,92 @@
 # DBMS
-DBMS
+
+
+# Database Locking Mechanisms
+
+## 🔐 1. By Lock Granularity (Scope of Data Locked)
+
+### Row-level Locking
+- Locks individual rows in a table.
+- Allows high concurrency.
+- **Example**: `SELECT ... FOR UPDATE` in SQL.
+
+### Page-level Locking
+- Locks a page (a block of rows, e.g., 8 KB of data).
+- Less granular, more overhead than row-level.
+
+### Table-level Locking
+- Locks the entire table.
+- Simple, but reduces concurrency.
+
+### Database-level Locking
+- Rarely used; locks the whole database.
+- Used in backups or system-wide operations.
+
+---
+
+## 🔄 2. By Lock Mode (Type of Access Controlled)
+
+### Shared Lock (S Lock)
+- Allows multiple transactions to read (`SELECT`) but not write.
+- Others can also hold shared locks.
+
+### Exclusive Lock (X Lock)
+- Only one transaction can read or write.
+- Blocks others from reading or writing.
+
+### Update Lock (U Lock)
+- Used when a row is read with the intent to update later.
+- Prevents deadlocks between shared and exclusive locks.
+
+### Intent Locks (IS, IX)
+- Used by databases like SQL Server to indicate intent to acquire row/table locks.
+
+---
+
+## ⏱️ 3. By Timing or Behavior
+
+### Pessimistic Locking
+- Locks data as soon as it's accessed.
+- Assumes conflicts are likely.
+
+### Optimistic Locking
+- Doesn't lock immediately; checks for conflicts before committing.
+- Used in high-concurrency systems (e.g., via version numbers or timestamps).
+
+---
+
+## 🧠 4. Other Types
+
+### Deadlocks
+- Circular dependency where two or more transactions wait for each other.
+- Database resolves this by aborting one transaction.
+
+### Blocking
+- Occurs when one transaction holds a lock and others must wait.
+
+### Row-Versioning (MVCC - Multi-Version Concurrency Control)
+- Used in databases like PostgreSQL and Oracle.
+- Avoids locks by keeping multiple versions of data.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # What is a Cursor?  
 
 A **Cursor** is a database object used to **retrieve, manipulate, and traverse** rows from a result set one at a time. It is commonly used when row-by-row processing is needed, especially in procedural database programming.  
