@@ -1,4 +1,8 @@
-# DBMS
+Topics:-
+
+- [Database Locking Mechanisms](#Database Locking Mechanisms) 
+- [ACID Properties](#ACID Properties) 
+
 
 
 #### Database Locking Mechanisms
