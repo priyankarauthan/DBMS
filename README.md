@@ -1,7 +1,7 @@
 Topics:-
 
-- [Database Locking Mechanisms](#Database Locking Mechanisms) 
-- [ACID Properties](#ACID Properties) 
+- [Database Locking Mechanisms](#database-locking-mechanisms) 
+- [ACID Properties](#acid-properties) 
 
 
 
@@ -190,6 +190,19 @@ If debiting succeeds but crediting fails, the whole transaction is rolled back t
 # 2. Consistency ("Valid State Transition")
 The database must remain in a consistent state before and after a transaction.
 Any transaction must adhere to integrity constraints (like foreign keys, unique constraints).
+
+Consistency ensures that after every transaction the database moves from one valid state to another valid state while satisfying all constraints like primary key, foreign key, unique constraints, and business rules.
+## Real-Life Example
+
+Think of ticket booking system.
+
+Rule:
+
+Total booked seats ≤ total seats
+
+If a transaction tries to book more seats than available, the database rejects the transaction.
+
+This keeps the system consistent.
 Example:
 If transferring ₹100 from A to B, the total balance of the bank should remain unchanged.
 The transaction should never leave the database in a corrupt state.
