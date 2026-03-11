@@ -115,7 +115,7 @@ A **dirty read** occurs when a transaction reads data that has been modified by 
 - If the other transaction later **rolls back**, the first transaction will have read **invalid or inconsistent data** — hence the term “dirty.”
 
 
-  # 🔑 ACID Properties
+  ## ACID Properties
 
 ACID stands for a set of properties that ensure reliable processing of database transactions:
 
