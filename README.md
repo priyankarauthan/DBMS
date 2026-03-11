@@ -1,7 +1,43 @@
 Topics:-
-
+- [Git](#git) 
 - [Database Locking Mechanisms](#database-locking-mechanisms) 
-- [ACID Properties](#acid-properties) 
+- [ACID Properties](#acid-properties)
+
+
+## GIT
+1. What is Git?
+Git is a distributed version control system used to track changes in source code and collaborate with multiple developers.
+
+2. What is the difference between git fetch and git pull?
+git fetch	 - Downloads latest changes, but does not merge
+git pull	 - Downloads + merges changes
+
+```
+git pull origin main
+```
+```
+Working Directory
+        ↓
+git add
+        ↓
+Staging Area
+        ↓
+git commit
+        ↓
+Local Repository
+        ↓
+git push
+        ↓
+Remote Repository
+```
+
+3. What is the staging area?
+
+The staging area is an intermediate step where changes are prepared before committing.
+
+Example:
+
+git add file.txt
 
 
 
