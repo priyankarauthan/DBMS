@@ -2,6 +2,8 @@ Topics:-
 - [Git](#git) 
 - [Database Locking Mechanisms](#database-locking-mechanisms) 
 - [ACID Properties](#acid-properties)
+- [Eventual Consistency](#eventual-consistency)
+- [Difference between SQL and NOSQL](#difference-between-sql-and-nosql)
 
 
 ## GIT
@@ -252,18 +254,71 @@ Repeatable Read – Ensures same result for repeated reads within a transaction.
 Serializable – Highest isolation; transactions execute one after another.
 Example:
 If two people withdraw ₹500 from the same account at the same time, isolation ensures that one transaction completes before the other starts processing.
-# 4. Durability ("Permanent Changes")
+## 4. Durability ("Permanent Changes")
 Once a transaction is committed, changes are permanently stored, even in case of a system crash.
 Example:
 If a bank deposit transaction is committed, the amount should not disappear even if the system crashes.
 Databases achieve durability using logs, backups, and checkpoints.
 
-### Q- When to Use a Subquery and when to use Join
+## Q- When to Use a Subquery and when to use Join
 Use JOIN when working with large datasets and retrieving related data.
 Use a subquery when working with aggregates or when it improves readability.
 Avoid subqueries inside WHERE clauses if a JOIN can achieve the same result for better performance.
 
-# ❌ When NOT to Use a Subquery
+## ❌ When NOT to Use a Subquery
 For Large Datasets: Subqueries can be inefficient because they may run multiple times for each row.
 When a JOIN is More Optimal: If you can replace a subquery with a JOIN, the query might run faster.
+
+## Eventual Consistency
+
+Eventual consistency means:
+
+After some time, all copies of the data in the system will become the same (consistent), but not immediately.
+
+It is commonly used in distributed systems and NoSQL databases.
+## Why NoSQL Scales Easier?
+
+NoSQL databases are designed for horizontal scaling from the start.
+Data automatically distributed.
+
+**Features built-in:**
+
+automatic sharding        
+
+replication        
+
+partitioning        
+
+## MySQL Horizontal Scaling Challenges
+
+Problems when scaling MySQL horizontally:-
+
+a) Complex Joins
+
+Relational queries:
+``
+SELECT * FROM orders JOIN customers```
+Hard if data is on different servers.
+
+b) Distributed Transactions
+
+If two shards are involved:
+
+Server1 → Order
+Server2 → Payment
+
+Maintaining ACID transactions becomes complex.
+
+## Difference between SQL and NOSQL
+
+| Feature          | MySQL (SQL)                  | NoSQL                      |
+| ---------------- | ---------------------------- | -------------------------- |
+| Database Type    | Relational Database          | Non-Relational Database    |
+| Data Structure   | Tables (rows & columns)      | Flexible structures        |
+| Schema           | Fixed schema                 | Dynamic schema             |
+| Query Language   | SQL                          | No fixed query language    |
+| Scalability      | Vertical scaling             | Horizontal scaling         |
+| Relationships    | Strong relationships (joins) | Usually no joins           |
+| Data Consistency | Strong ACID consistency      | Often eventual consistency |
+| Best For         | Structured data              | Large, unstructured data   |
 
