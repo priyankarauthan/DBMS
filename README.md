@@ -4,6 +4,8 @@ Topics:-
 - [ACID Properties](#acid-properties)
 - [Eventual Consistency](#eventual-consistency)
 - [Difference between SQL and NOSQL](#difference-between-sql-and-nosql)
+- [SQL query to find 3rd highest salary](#sql-query-to-find-3rd-highest-salary)
+- [ DENSE_RANK](#dense-rank)
 
 
 ## GIT
@@ -321,4 +323,18 @@ Maintaining ACID transactions becomes complex.
 | Relationships    | Strong relationships (joins) | Usually no joins           |
 | Data Consistency | Strong ACID consistency      | Often eventual consistency |
 | Best For         | Structured data              | Large, unstructured data   |
+
+## DENSE_RANK
+
+Dense Rank is a SQL window function that assigns ranking numbers to rows based on ordering, giving the same rank to duplicate values without skipping rank numbers.
+
+## SQL query to find 3rd highest salary
+```
+SELECT salary
+FROM (
+    SELECT salary, DENSE_RANK() OVER (ORDER BY salary DESC) AS rnk
+    FROM employee
+) t
+WHERE rnk = 3;
+```
 
